@@ -200,7 +200,7 @@
 							<span class="nav-text">Professors</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="all-professors.html">All Professor</a></li>
+                            <li><a href="{{url('allProfessors')}}">All Professor</a></li>
                             <li><a href="add-professor.html">Add Professor</a></li>
                             <li><a href="edit-professor.html">Edit Professor</a></li>
                             <li><a href="professor-profile.html">Professor Profile</a></li>

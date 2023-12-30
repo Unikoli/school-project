@@ -223,10 +223,10 @@
                             <span class="nav-text">Professors</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{url('allProfessors')}}">All Professor</a></li>
-                            <li><a href="{{url('addProfessors')}}">Add Professor</a></li>
-                            <li><a href="{{url('editProfessors')}}">Edit Professor</a></li>
-                            <li><a href="{{url('professorsProfile')}}">Professor Profile</a></li>
+                            <li><a href="all-professors.html">All Professor</a></li>
+                            <li><a href="add-professor.html">Add Professor</a></li>
+                            <li><a href="edit-professor.html">Edit Professor</a></li>
+                            <li><a href="professor-profile.html">Professor Profile</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -234,10 +234,10 @@
                             <span class="nav-text">Students</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="all-students.html">All Students</a></li>
-                            <li><a href="add-student.html">Add Students</a></li>
-                            <li><a href="edit-student.html">Edit Students</a></li>
-                            <li><a href="about-student.html">About Students</a></li>
+                            <li><a href="{{url('allStudents')}}">All Students</a></li>
+                            <li><a href="{{url('addStudents')}}">Add Students</a></li>
+                            <li><a href="{{url('editStudents')}}">Edit Students</a></li>
+                            <li><a href="{{url('aboutStudents')}}">About Students</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -449,14 +449,14 @@
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Add Professor</h4>
+                            <h4>Add Student</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="add-professor.html">Professors</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Professor</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Student</a></li>
                         </ol>
                     </div>
                 </div>
@@ -464,147 +464,90 @@
                 <div class="row">
                     <div class="col-xl-12 col-xxl-12 col-sm-12">
                         <div class="card">
-                            <!-- @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endif -->
                             <div class="card-header">
                                 <h5 class="card-title">Basic Info</h5>
                             </div>
                             <div class="card-body">
-                                <form action="addProfessors" method="post">
+                                <form action="addStudents" method="post">
                                     @csrf
-
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <!-- @if ($errors->has('firstname'))
-                                            <div class="alert alert-danger">
-                                                {{ $errors->first('firstname') }}
-                                            </div>
-                                            @endif -->
+
                                             <div class="form-group">
                                                 <label class="form-label">First Name</label>
-                                                <input type="text" class="form-control" name="firstname"
+                                                <input type="text" class="form-control" name="firstname" value="ujit"
+
                                                     class="form-control @error('lastname') is-invalid @enderror"
                                                     value="{{ old('firstname') }}"
-                                                    style="@error('firstname')border-color: red; @enderror">
+                                                    style="@error('firstname')border-color: red; @enderror"
+                                                >
+
                                                 @error('firstname')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-
                                             <div class="form-group">
                                                 <label class="form-label">Last Name</label>
-                                                <input type="text" class="form-control" name="lastname"
-                                                    class="form-control @error('lastname') is-invalid @enderror"
+                                                <input type="text"  name="lastname" value="woli"
+                                                class="form-control @error('lastname') is-invalid @enderror"
                                                     value="{{ old('lastname') }}"
-                                                    style="@error('lastname')border-color: red; @enderror">
+                                                    style="@error('lastname')border-color: red; @enderror"
+                                                >
+
                                                 @error('lastname')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+
                                             </div>
                                         </div>
-
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-
                                             <div class="form-group">
-                                                <label class="form-label">Email Here</label>
-                                                <input type="text" class="form-control" name="email"
-                                                    class="form-control @error('email') is-invalid @enderror"
+                                                <label class="form-label">Email</label>
+                                                <input type="text"  name="email" value="@gmail.com"
+                                                class="form-control @error('email') is-invalid @enderror"
                                                     value="{{ old('email') }}"
-                                                    style="@error('email')border-color: red; @enderror">
+                                                    style="@error('email')border-color: red; @enderror"
+                                                >
                                                 @error('email')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class=" col-lg-6 col-md-6 col-sm-12">
-
-                                            <div class="form-group">
-                                                <label class="form-label">Joining Date</label>
-                                                <input name="dateOfJoining" class="datepicker-default form-control"
-                                                    id="datepicker"
-                                                    class="form-control @error('dateOfJoining') is-invalid @enderror"
-                                                    value="{{ old('dateOfJoining') }}"
-                                                    style="@error('dateOfJoining')border-color: red; @enderror">
-                                                @error('dateOfJoining')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-
-                                            <div class="form-group">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" class="form-control" name="password"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    value="{{ old('password') }}"
-                                                    style="@error('password')border-color: red; @enderror">
-                                                @error('password')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                <label class="form-label">Confirm Password</label>
-                                                <input type="password" class="form-control" name="confirmPassword"
-                                                    class="form-control @error('confirmPassword') is-invalid @enderror"
-                                                    value="{{ old('confirmPassword') }}"
-                                                    style="@error('confirmPassword')border-color: red; @enderror">
-                                                @error('confirmPassword')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-
-                                            <div class="form-group">
-                                                <label class="form-label">Mobile Number</label>
-                                                <input type="text" class="form-control" name="mobileNumber"
-                                                    class="form-control @error('mobileNumber') is-invalid @enderror"
-                                                    value="{{ old('mobileNumber') }}"
-                                                    style="@error('mobileNumber')border-color: red; @enderror">
-                                                @error('mobileNumber')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
+                                                <label class="form-label">Registration Date</label>
+                                                <input class="datepicker-default form-control" id="datepicker"
+                                                    name="registrationDate" value="2020/03/9"
+                                                    class="form-control @error('registrationDate') is-invalid @enderror"
+                                                    value="{{ old('registrationDate') }}"
+                                                    style="@error('registrationDate')border-color: red; @enderror"
+                                                    >
+                                                    @error('registrationDate')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
                                             <div class="form-group">
-                                                <label class="form-label">Gender</label>
+                                                <label class="form-label">Roll No.</label>
+                                                <input type="text"  name="rollNo" value='3'
+                                                class="form-control @error('rollNo') is-invalid @enderror"
+                                                    value="{{ old('rollNo') }}"
+                                                    style="@error('rollNo')border-color: red; @enderror"
+                                                >
+                                                @error('rollNo')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Class</label>
                                                 <select class="form-control">
-                                                    <option value="Gender">Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-
-                                            <div class="form-group">
-                                                <label class="form-label">Designation</label>
-                                                <input type="text" class="form-control" name="designation"
-                                                    class="form-control @error('designation') is-invalid @enderror"
-                                                    value="{{ old('designation') }}"
-                                                    style="@error('designation')border-color: red; @enderror">
-                                                @error('designation')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label">Department</label>
-                                                <select class="form-control">
-                                                    <option value="Department">Department</option>
+                                                    <option value="Class">Class</option>
                                                     <option value="html">HTML</option>
                                                     <option value="css">CSS</option>
                                                     <option value="javascript">JavaScript</option>
@@ -620,30 +563,103 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-
                                             <div class="form-group">
-                                                <label class="form-label">Date of Birth</label>
-                                                <input class="datepicker-default form-control" id="datepicker1"
-                                                    name="dateOfBirth"
-                                                    class="form-control @error('dateOfBirth') is-invalid @enderror"
-                                                    value="{{ old('dateOfBirth') }}"
-                                                    style="@error('dateOfBirth')border-color: red; @enderror">
-                                                @error('dateOfBirth')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
+                                                <label class="form-label">Gender</label>
+                                                <select class="form-control" name="gender" 
+                                                class="form-control @error('gender') is-invalid @enderror"
+                                                    value="{{ old('gender') }}"
+                                                    style="@error('gender')border-color: red; @enderror"
+                                                >
+                                                    <option value="Gender">Gender</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-
                                             <div class="form-group">
-                                                <label class="form-label">Education</label>
-                                                <input type="text" class="form-control" name="education"
-                                                    class="form-control @error('education') is-invalid @enderror"
-                                                    value="{{ old('education') }}"
-                                                    style="@error('education')border-color: red; @enderror">
-                                                @error('education')
-                                                <div class="error-message" style="color: red;">{{ $message }}</div>
-                                                @enderror
+                                                <label class="form-label">Mobile Number</label>
+                                                <input type="text" class="form-control " name="mobileNumber"
+                                                    value="980348849"
+                                                    class="form-control @error('mobileNumber') is-invalid @enderror"
+                                                    value="{{ old('mobileNumber') }}"
+                                                    style="@error('mobileNumber')border-color: red; @enderror"
+                                                    >
+                                                    @error('mobileNumber')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Parents Name</label>
+                                                <input type="text" class="form-control " name="parentsName"
+                                                    value="jahfjhi"
+                                                    class="form-control @error('parentsName') is-invalid @enderror"
+                                                    value="{{ old('parentsName') }}"
+                                                    style="@error('parentsName')border-color: red; @enderror"
+                                                    >
+                                                    @error('parentsName')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Parents Mobile Number</label>
+                                                <input type="text" class="form-control" name="parentsMobileNumber"
+                                                    value="89789789"
+                                                    class="form-control @error('parentsMobileNumber') is-invalid @enderror"
+                                                    value="{{ old('parentsMobileNumber') }}"
+                                                    style="@error('parentsMobileNumber')border-color: red; @enderror"
+                                                    >
+                                                    @error('parentsMobileNumber')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Date of Birth</label>
+                                                <input name="dateOfBirth" class="datepicker-default form-control"
+                                                    id="datepicker1" value="2019/4/6"
+                                                    class="form-control @error('dateOfBirth') is-invalid @enderror"
+                                                    value="{{ old('dateOfBirth') }}"
+                                                    style="@error('dateOfBirth')border-color: red; @enderror"
+                                                    >
+                                                    @error('dateOfBirth')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Blood Group</label>
+                                                <input type="text" class="form-control" name="bloodGroup"
+                                                    value="o-negative"
+                                                    class="form-control @error('bloodGroup') is-invalid @enderror"
+                                                    value="{{ old('bloodGroup') }}"
+                                                    style="@error('bloodGroup')border-color: red; @enderror"
+                                                    >
+                                                    @error('bloodGroup')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Address</label>
+                                                <textarea class="form-control" rows="5" name="address"
+                                                    value="imadole-lalitpur"
+                                                    class="form-control @error('address') is-invalid @enderror"
+                                                    value="{{ old('address') }}"
+                                                    style="@error('address')border-color: red; @enderror"
+                                                    >
+                                            
+                                                </textarea>
+                                                @error('address')
+                                            <div class="error-message" style="color: red;">{{ $message }}</div>
+                                            @enderror
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -661,6 +677,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!--**********************************

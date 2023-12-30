@@ -180,12 +180,12 @@
 							<span class="nav-text">Dashboard</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{url('index1')}}">Dashboard 1</a></li>
-                            <li><a href="{{url('index2')}}">Dashboard 2</a></li>
-                            <li><a href="{{url('index3')}}">Dashboard 3</a></li>
+                            <li><a href="index.html">Dashboard 1</a></li>
+                            <li><a href="index-2.html">Dashboard 2</a></li>
+                            <li><a href="index-3.html">Dashboard 3</a></li>
                         </ul>
                     </li>
-					<li><a class="ai-icon" href="{{url('eventManagement')}}" aria-expanded="false">
+					<li><a class="ai-icon" href="event-management.html" aria-expanded="false">
 							<i class="la la-calendar"></i>
 							<span class="nav-text">Event Management</span>
 						</a>
@@ -195,10 +195,10 @@
 							<span class="nav-text">Professors</span>
 						</a>
                         <ul aria-expanded="false">
-							<li><a href="{{url('allProfessors')}}">All Professor</a></li>
-                            <li><a href="{{url('addProfessors')}}">Add Professor</a></li>
-                            <li><a href="{{url('editProfessors')}}">Edit Professor</a></li>
-                            <li><a href="{{url('professors')}}">Professor Profile</a></li>
+                            <li><a href="all-professors.html">All Professor</a></li>
+                            <li><a href="add-professor.html">Add Professor</a></li>
+                            <li><a href="edit-professor.html">Edit Professor</a></li>
+                            <li><a href="professor-profile.html">Professor Profile</a></li>
                         </ul>
                     </li>
 					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -417,17 +417,17 @@
             <!-- row -->
             <div class="container-fluid">
 				    
-                <div class="row page-titles mx-0">
+				<div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>All Professors</h4>
+                            <h4>All Student</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Professors</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Professors</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Students</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Student</a></li>
                         </ol>
                     </div>
                 </div>
@@ -444,8 +444,8 @@
 							<div id="list-view" class="tab-pane fade active show col-lg-12">
 								<div class="card">
 									<div class="card-header">
-										<h4 class="card-title">All Professors  </h4>
-										<a href="{{url('addProfessors')}}" class="btn btn-primary">+ Add new</a>
+										<h4 class="card-title">All Students List  </h4>
+										<a href="{{url('addStudents')}}" class="btn btn-primary">+ Add new</a>
 									</div>
 									<div class="card-body">
 										<div class="table-responsive">
@@ -453,48 +453,58 @@
 												<thead>
 													<tr>
 														
-														<th>Firstname</th>
-														<th>Lastname</th>
+														<th>FirstName</th>
+														<th>LastName</th>
 														<th>Email</th>
+														<th>RegistrationDate</th>
+														<th>RollNO</th>
+														<th> Gender</th>
+														<th>MobileNumber</th>
+														<th>ParentsName</th>
+														<th>ParentsMobileNo.</th>
 														<th>DOB</th>
-														<th>Education</th>
-														<th>Mobile Number</th>
-														
-														<th>Joining Date</th>
-														<th>Action</th>
+														<th>BloodGroup</th>
+														<th>Address</th>
 													</tr>
 												</thead>
-												<tfoot>
+												<tbody>
+													@foreach($students as $Student)
 													<tr>
-														<th>Firstname</th>
+														<td>{{$Student->firstname}}</td>
+														<td>{{$Student->lastname}}</td>
+														<td>{{$Student->email}}</td>
+														<td>{{$Student->registrationDate}}</td>
+														<td>{{$Student->rollNo}}</td>
+														<td>{{$Student->gender}}</td>
+														<td>{{$Student->mobileNumber}}</td>
+														<td>{{$Student->ParentsName}}</td>
+														<td>{{$Student->parentsMobileNumber}}</td>
+														<td>{{$Student->dateOfBirth}}</td>
+														<td>{{$Student->bloodGroup}}</td>
+														<td>{{$Student->address}}</td>
+													</tr>
+
+													@endforeach
+										
+													
+												</tbody>
+												<tfoot>
+												<tr>
 														
-														<th>Lastname</th>
+														<th>FirstName</th>
+														<th>LastName</th>
 														<th>Email</th>
+														<th>RegistrationDate</th>
+														<th>RollNO</th>
+														<th> Gender</th>
+														<th>MobileNumber</th>
+														<th>ParentsName</th>
+														<th>ParentsMobileNo.</th>
 														<th>DOB</th>
-														<th>Education</th>
-														<th>Mobile Number</th>
-														
-														<th>Joining Date</th>
-														<th>Action</th>
+														<th>BloodGroup</th>
+														<th>Address</th>
 													</tr>
 												</tfoot>
-												<tbody>
-													@foreach($Professors as $professor)
-														<tr>
-															<td>{{$professor->firstname}}</td>
-															<td>{{$professor->lastname}}</td>
-															<td>{{$professor->email}}</td>
-															<td>{{$professor->dateOfBirth}}</td>
-															<td>{{$professor->mobileNumber}}</td>
-															<td>{{$professor->dateOfJoining}}</td>
-															<td>{{$professor->education}}</td>
-															<td>
-																<a href="{{url('professor/delete_professors_data',$professor->id)}}">delete</a>
-																<a href="{{url('editProfessors')}}">edit</a>
-															</td>
-														</tr>
-													@endforeach
-												</tbody>
 											</table>
 										</div>
 									</div>
@@ -526,15 +536,15 @@
 													<p class="text-muted">M.COM., P.H.D.</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Male</strong></li>
+															<span>Roll No.</span><strong>02</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -563,15 +573,15 @@
 													<p class="text-muted">B.COM., M.COM.</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
+															<span>Roll No.</span><strong>03</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -600,15 +610,15 @@
 													<p class="text-muted">M.COM., P.H.D.</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
+															<span>Roll No.</span><strong>04</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -637,15 +647,15 @@
 													<p class="text-muted">B.COM., M.COM.</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
+															<span>Roll No.</span><strong>05</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -674,15 +684,15 @@
 													<p class="text-muted">B.A, B.C.A</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
+															<span>Roll No.</span><strong>06</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -711,15 +721,15 @@
 													<p class="text-muted">M.COM., P.H.D.</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Male</strong></li>
+															<span>Roll No.</span><strong>07</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -748,15 +758,15 @@
 													<p class="text-muted">B.COM., M.COM.</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
+															<span>Roll No.</span><strong>08</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -785,15 +795,15 @@
 													<p class="text-muted">B.A, B.C.A</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
+															<span>Roll No.</span><strong>09</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -822,15 +832,15 @@
 													<p class="text-muted">M.COM., P.H.D.</p>
 													<ul class="list-group mb-3 list-group-flush">
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Male</strong></li>
+															<span>Roll No.</span><strong>10</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
 															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
+															<span class="mb-0">Admission Date. :</span><strong>01 July 2020</strong></li>
 														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
+															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
 													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="about-student.html">Read More</a>
 												</div>
 											</div>
 										</div>
@@ -840,7 +850,7 @@
 						</div>
 					</div>
 				</div>
-				
+			   
             </div>
         </div>
         <!--**********************************

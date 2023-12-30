@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\User;
 use App\Models\Professors_table;
+use App\Models\Students_table;
 
 class HomeController extends Controller
 {
@@ -68,6 +69,12 @@ class HomeController extends Controller
     public function addProfessors()
     {
         return view("addProfessors");
+    }
+    public function editProfessors(){
+        return view('editProfessors');
+    }
+    public function professorsProfile(){
+        return view('professorsProfile');
     }
     public function storeProfessorsInfo(Request $request)
     {
@@ -143,6 +150,57 @@ class HomeController extends Controller
         $professor=User::find($id);
         $professor->delete();
         return redirect('allProfessors');
+    }
+    public function allStudents(){
+        // return view('allStudents');
+        $students=Students_table::all();
+        return view('allStudents',compact('students'));
+    }
+    public function addStudents(){
+        return view('addStudents');
+    }
+    public function storeStudentsInfo(Request $request){
+        $validateStudentsInfo=$request->validate([
+            'firstname'=>'required|min:3',
+            'lastname'=>'required|min:3',
+            'email'=>'required|unique:students_info|email',
+            'registrationDate'=>'required',
+            'rollNo'=>'required|numeric',
+            'gender'=>'sometimes',
+            
+            'mobileNumber'=>'required',
+            'parentsName'=>'required',
+            'parentsMobileNumber'=>'required',
+            'dateOfBirth'=>'required',
+            'bloodGroup'=>'required',
+            'address'=>'required'
+        ]);
+        $studentData=new Students_table;
+        $studentData->firstname=request('firstname');
+        $studentData->lastname=request('lastname');
+        $studentData->email=request('email');
+        $studentData->registrationDate=request('registrationDate');
+        $studentData->rollNo=request('rollNo');
+        
+        $studentData->gender=request('gender');
+        $studentData->mobileNumber=request('mobileNumber');
+        $studentData->parentsName=request('parentsName');
+        $studentData->parentsMobileNumber=request('parentsMobileNumber');
+        $studentData->dateOfBirth=request('dateOfBirth');
+        $studentData->bloodGroup=request('bloodGroup');
+        $studentData->address=request('address');
+
+        
+        $studentData->save();
+        return redirect('allStudents')->with('success');
+
+      
+    }
+    public function editStudents(){
+        return view('editStudents');
+    }
+    public function aboutStudents(){
+        return view('aboutStudents');
     }
 
     

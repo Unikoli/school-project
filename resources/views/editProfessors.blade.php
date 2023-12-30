@@ -3,16 +3,18 @@
 
 <head>
 	
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Edumin - Bootstrap Admin Dashboard </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <link rel="stylesheet" href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css">
-	<!-- Datatable -->
-    <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+	
+	<!-- Pick date -->
+    <link rel="stylesheet" href="vendor/pickadate/themes/default.css">
+    <link rel="stylesheet" href="vendor/pickadate/themes/default.date.css">
 
 </head>
 
@@ -180,12 +182,12 @@
 							<span class="nav-text">Dashboard</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{url('index1')}}">Dashboard 1</a></li>
-                            <li><a href="{{url('index2')}}">Dashboard 2</a></li>
-                            <li><a href="{{url('index3')}}">Dashboard 3</a></li>
+                            <li><a href="index.html">Dashboard 1</a></li>
+                            <li><a href="index-2.html">Dashboard 2</a></li>
+                            <li><a href="index-3.html">Dashboard 3</a></li>
                         </ul>
                     </li>
-					<li><a class="ai-icon" href="{{url('eventManagement')}}" aria-expanded="false">
+					<li><a class="ai-icon" href="event-management.html" aria-expanded="false">
 							<i class="la la-calendar"></i>
 							<span class="nav-text">Event Management</span>
 						</a>
@@ -195,10 +197,10 @@
 							<span class="nav-text">Professors</span>
 						</a>
                         <ul aria-expanded="false">
-							<li><a href="{{url('allProfessors')}}">All Professor</a></li>
+                            <li><a href="{{url('allProfessors')}}">All Professor</a></li>
                             <li><a href="{{url('addProfessors')}}">Add Professor</a></li>
                             <li><a href="{{url('editProfessors')}}">Edit Professor</a></li>
-                            <li><a href="{{url('professors')}}">Professor Profile</a></li>
+                            <li><a href="{{url('professorsProfile')}}">Professor Profile</a></li>
                         </ul>
                     </li>
 					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -206,10 +208,10 @@
 							<span class="nav-text">Students</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{url('allStudents')}}">All Students</a></li>
-                            <li><a href="{{url('addStudents')}}">Add Students</a></li>
-                            <li><a href="{{url('editStudents')}}">Edit Students</a></li>
-                            <li><a href="{{url('aboutStudents')}}">About Students</a></li>
+                            <li><a href="all-students.html">All Students</a></li>
+                            <li><a href="add-student.html">Add Students</a></li>
+                            <li><a href="edit-student.html">Edit Students</a></li>
+                            <li><a href="about-student.html">About Students</a></li>
                         </ul>
                     </li>
 					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -408,437 +410,140 @@
             Sidebar end
         ***********************************-->
 
-		
-		
         <!--**********************************
             Content body start
         ***********************************-->
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
-				    
+			
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>All Professors</h4>
+                            <h4>Edit Professor</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Professors</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Professors</a></li>
+                            <li class="breadcrumb-item active"><a href="edit-professor.html">Professors</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit Professor</a></li>
                         </ol>
                     </div>
                 </div>
 				
 				<div class="row">
-					<div class="col-lg-12">
-						<ul class="nav nav-pills mb-3">
-							<li class="nav-item"><a href="#list-view" data-toggle="tab" class="nav-link btn-primary mr-1 show active">List View</a></li>
-							<li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid View</a></li>
-						</ul>
-					</div>
-					<div class="col-lg-12">
-						<div class="row tab-content">
-							<div id="list-view" class="tab-pane fade active show col-lg-12">
-								<div class="card">
-									<div class="card-header">
-										<h4 class="card-title">All Professors  </h4>
-										<a href="{{url('addProfessors')}}" class="btn btn-primary">+ Add new</a>
-									</div>
-									<div class="card-body">
-										<div class="table-responsive">
-											<table id="example3" class="display" style="min-width: 845px">
-												<thead>
-													<tr>
-														
-														<th>Firstname</th>
-														<th>Lastname</th>
-														<th>Email</th>
-														<th>DOB</th>
-														<th>Education</th>
-														<th>Mobile Number</th>
-														
-														<th>Joining Date</th>
-														<th>Action</th>
-													</tr>
-												</thead>
-												<tfoot>
-													<tr>
-														<th>Firstname</th>
-														
-														<th>Lastname</th>
-														<th>Email</th>
-														<th>DOB</th>
-														<th>Education</th>
-														<th>Mobile Number</th>
-														
-														<th>Joining Date</th>
-														<th>Action</th>
-													</tr>
-												</tfoot>
-												<tbody>
-													@foreach($Professors as $professor)
-														<tr>
-															<td>{{$professor->firstname}}</td>
-															<td>{{$professor->lastname}}</td>
-															<td>{{$professor->email}}</td>
-															<td>{{$professor->dateOfBirth}}</td>
-															<td>{{$professor->mobileNumber}}</td>
-															<td>{{$professor->dateOfJoining}}</td>
-															<td>{{$professor->education}}</td>
-															<td>
-																<a href="{{url('professor/delete_professors_data',$professor->id)}}">delete</a>
-																<a href="{{url('editProfessors')}}">edit</a>
-															</td>
-														</tr>
-													@endforeach
-												</tbody>
-											</table>
-										</div>
-									</div>
-                                </div>
-                            </div>
-							<div id="grid-view" class="tab-pane fade col-lg-12">
-								<div class="row">
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic2.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Alexander</h3>
-													<p class="text-muted">M.COM., P.H.D.</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Male</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic3.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Elizabeth</h3>
-													<p class="text-muted">B.COM., M.COM.</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic4.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Amelia</h3>
-													<p class="text-muted">M.COM., P.H.D.</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic5.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Charlotte</h3>
-													<p class="text-muted">B.COM., M.COM.</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic6.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Isabella</h3>
-													<p class="text-muted">B.A, B.C.A</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic7.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Sebastian</h3>
-													<p class="text-muted">M.COM., P.H.D.</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Male</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic8.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Olivia</h3>
-													<p class="text-muted">B.COM., M.COM.</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic9.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Emma</h3>
-													<p class="text-muted">B.A, B.C.A</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Female</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-										<div class="card card-profile">
-											<div class="card-header justify-content-end pb-0">
-												<div class="dropdown">
-													<button class="btn btn-link" type="button" data-toggle="dropdown">
-														<span class="dropdown-dots fs--1"></span>
-													</button>
-													<div class="dropdown-menu dropdown-menu-right border py-0">
-														<div class="py-2">
-															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
-															<a class="dropdown-item text-danger" href="javascript:void(0);">Delete</a>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="card-body pt-2">
-												<div class="text-center">
-													<div class="profile-photo">
-														<img src="images/profile/small/pic10.jpg" width="100" class="img-fluid rounded-circle" alt="">
-													</div>
-													<h3 class="mt-4 mb-1">Jackson</h3>
-													<p class="text-muted">M.COM., P.H.D.</p>
-													<ul class="list-group mb-3 list-group-flush">
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Gender :</span><strong>Male</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Phone No. :</span><strong>+01 123 456 7890</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Email:</span><strong>info@example.com</strong></li>
-														<li class="list-group-item px-0 d-flex justify-content-between">
-															<span class="mb-0">Address:</span><strong>#8901 Marmora Road</strong></li>
-													</ul>
-													<a class="btn btn-outline-primary btn-rounded mt-3 px-4" href="professor-profile.html">Read More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Basic Info</h5>
 							</div>
-						</div>
-					</div>
+							<div class="card-body">
+                                <form action="#" method="post">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">First Name</label>
+												<input type="text" class="form-control" value="">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Last Name</label>
+												<input type="text" class="form-control" value="Parker">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Email Here</label>
+												<input type="text" class="form-control" value="info@example.com">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Joining Date</label>
+												<input name="datepicker" class="datepicker-default form-control" id="datepicker" value="20 August 2020">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Password</label>
+												<input type="password" class="form-control" value="jsandjn">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Confirm Password</label>
+												<input type="password" class="form-control" value="jsandjn">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Mobile Number</label>
+												<input type="text" class="form-control" value="+91 123 456 7890">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Gender</label>
+												<select class="form-control">
+													<option value="Gender">Gender</option>
+													<option value="Male" selected="">Male</option>
+													<option value="Female">Female</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Designation</label>
+												<input type="text" class="form-control" value="Senior Manager">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Department</label>
+												<select class="form-control">
+													<option value="Department">Department</option>
+													<option value="html">HTML</option>
+													<option value="css">CSS</option>
+													<option value="javascript" selected="">JavaScript</option>
+													<option value="angular">Angular</option>
+													<option value="angular">React</option>
+													<option value="vuejs">Vue.js</option>
+													<option value="ruby">Ruby</option>
+													<option value="php">PHP</option>
+													<option value="asp">ASP.NET</option>
+													<option value="python">Python</option>
+													<option value="mysql">MySQL</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Date of Birth</label>
+												<input name="datepicker" class="datepicker-default form-control" id="datepicker1" value="20 August 2020">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Education</label>
+												<input type="text" class="form-control" value="M.COM, B.COM, B.A">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group fallback w-100">
+												<input type="file" class="dropify" data-default-file="">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-light">Cencel</button>
+										</div>
+									</div>
+								</form>
+                            </div>
+                        </div>
+                    </div>
 				</div>
 				
             </div>
@@ -878,19 +583,23 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="vendor/global/global.min.js"></script>
+<script src="vendor/global/global.min.js"></script>
 	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="js/custom.min.js"></script>
-    <script src="js/dlabnav-init.js"></script>	
-	
-	<!-- Datatable -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="js/plugins-init/datatables.init.js"></script>
-	
-    <!-- Svganimation scripts -->
+	<script src="js/dlabnav-init.js"></script>
+
+	<!-- Svganimation scripts -->
     <script src="vendor/svganimation/vivus.min.js"></script>
     <script src="vendor/svganimation/svg.animation.js"></script>
     <script src="js/styleSwitcher.js"></script>
+	
+	<!-- pickdate -->
+    <script src="vendor/pickadate/picker.js"></script>
+    <script src="vendor/pickadate/picker.time.js"></script>
+    <script src="vendor/pickadate/picker.date.js"></script>
+	
+	<!-- Pickdate -->
+    <script src="js/plugins-init/pickadate-init.js"></script>
 	
 </body>
 </html>
